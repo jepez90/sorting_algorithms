@@ -9,6 +9,10 @@
  */
 void quick_sort(int *array, size_t size)
 {
+	if (array == NULL || size <= 1)
+	{
+		return;
+	}
 	quick_sort_recursive(array, 0, size - 1, size);
 }
 
@@ -28,6 +32,7 @@ void quick_sort_recursive(int *array, size_t begin, size_t end, size_t size)
 	int pivot, temp;
 
 	pivot = array[end];
+	j = i;
 
 	while (i < end)
 	{
