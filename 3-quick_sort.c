@@ -27,7 +27,6 @@ void quick_sort_recursive(int *array, size_t begin, size_t end, size_t size)
 	size_t i = begin, j;
 	int pivot, temp;
 
-
 	pivot = array[end];
 
 	while (i < end)
@@ -40,7 +39,7 @@ void quick_sort_recursive(int *array, size_t begin, size_t end, size_t size)
 		else
 		{
 			j = i + 1;
-			while (array[j] > pivot)
+			while (array[j] >= pivot && j < end)
 				j++;
 			/* swap*/
 			temp = array[j];
@@ -54,9 +53,13 @@ void quick_sort_recursive(int *array, size_t begin, size_t end, size_t size)
 		if (j == end)
 		{	/* si j apunta a pivot */
 			if (i > (begin + 1))
+			{
 				quick_sort_recursive(array, begin, i - 1, size);
-			if (i < (end - begin - 1))
+			}
+			if (1 < (end - i))
+			{
 				quick_sort_recursive(array,  i + 1, end, size);
+			}
 			break;
 		}
 	}
