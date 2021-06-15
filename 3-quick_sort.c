@@ -46,11 +46,12 @@ void array_swap(int *array, size_t first, size_t second)
  */
 void _quick_sort(int *array, size_t size, int *sub_array, size_t sub_size)
 {
-	int hold, pivot = sub_array[sub_size - 1];
+	int pivot = sub_array[sub_size - 1];
 	size_t i = 0, j;
 
-	while (sub_array[i++] < pivot)
+	while (sub_array[i] < pivot)
 	{
+		i++;
 		if (i == (sub_size - 1))
 			_quick_sort(array, size, sub_array, sub_size - 1);
 	}
