@@ -50,7 +50,11 @@ void cocktail_sort_list(listint_t **list)
 				print_list(*list);
 			}
 			else
+			{
+				if (change_exists == 1)
+					break;
 				current = current->next;
+			}
 		}
 		current = last_node;
 		while (current->prev != NULL)
@@ -58,10 +62,13 @@ void cocktail_sort_list(listint_t **list)
 			if (current->n < current->prev->n)
 			{
 				current = current->prev;
+				printf("%d\n", current->n);
 				swap_func(list, current);
-				change_exists = 1;
+				change_exists = 2;
 				print_list(*list);
 			}
+			else if (change_exists == 2)
+				break;
 			current = current->prev;
 		}
 		if (change_exists == 0)
