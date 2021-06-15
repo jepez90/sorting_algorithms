@@ -46,7 +46,7 @@ void _quick_sort(int *array, size_t size, int *sub_array, size_t sub_size)
 			while (sub_array[j] >= pivot && j < (sub_size - 1))
 				j++;
 
-			if (j < sub_size && i != j)
+			if (j < sub_size && sub_array[i] != sub_array[j])
 			{
 				temp = sub_array[j];
 				sub_array[j] = sub_array[i];
