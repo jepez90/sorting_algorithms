@@ -21,7 +21,7 @@ void shell_sort(int *array, size_t size)
 	for (k = 1; k < size; k++)
 	{
 		gap = new_gap(k);
-		if (gap > (size / 3))
+		if (gap > (size / 2))
 		{
 			k--;
 			break;
@@ -35,7 +35,7 @@ void shell_sort(int *array, size_t size)
 		{
 			for (i = gap + l; i < size; i += gap)
 			{
-				for (j = i; j > gap; j -= gap)
+				for (j = i; j >= gap; j -= gap)
 				{
 					if (array[j - gap] > array[j])
 					{
