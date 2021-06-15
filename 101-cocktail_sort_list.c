@@ -19,6 +19,8 @@ void swap_func(listint_t **list, listint_t *current)
 	current->prev->next = current;
 	if (current->next != NULL)
 		current->next->prev = current;
+
+	print_list(*list);
 }
 
 /**
@@ -29,14 +31,11 @@ void swap_func(listint_t **list, listint_t *current)
  */
 void cocktail_sort_list(listint_t **list)
 {
-	listint_t *current, *last_node;
+	listint_t *current;
 	int change_exists;
 
 	if (list == NULL || *list == NULL)
 		return;
-	last_node = *list;
-	while (last_node->next != NULL)
-		last_node = last_node->next;
 	while (1)
 	{
 		current = *list;
@@ -47,25 +46,22 @@ void cocktail_sort_list(listint_t **list)
 			{  /*swap node*/
 				swap_func(list, current);
 				change_exists = 1;
-				print_list(*list);
 			}
 			else
 			{
 				if (change_exists == 1)
 					break;
 				current = current->next;
-			}
-		}
-		current = last_node;
+			}	}
+		while (current->next != NULL)
+			current = current->next;
 		while (current->prev != NULL)
 		{
 			if (current->n < current->prev->n)
 			{
 				current = current->prev;
-				printf("%d\n", current->n);
 				swap_func(list, current);
 				change_exists = 2;
-				print_list(*list);
 			}
 			else if (change_exists == 2)
 				break;
@@ -73,5 +69,4 @@ void cocktail_sort_list(listint_t **list)
 		}
 		if (change_exists == 0)
 			break;
-	}
-}
+	}	}
