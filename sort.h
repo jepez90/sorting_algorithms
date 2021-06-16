@@ -27,4 +27,7 @@ void _quick_sort(int *array, size_t size, int *sub_array, size_t sub_size);
 void shell_sort(int *array, size_t size);
 void cocktail_sort_list(listint_t **list);
 
+void quick_sort_hoare(int *array, size_t size);
+void heap_sort(int *array, size_t size);
+
 #endif
