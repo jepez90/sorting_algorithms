@@ -15,6 +15,9 @@ void heap_sort(int *array, size_t size)
 	size_t last = size - 1;
 	int max;
 
+	if (array == NULL)
+		return;
+
 	build_heap(array, size);
 	while (last > 0)
 	{
@@ -71,7 +74,7 @@ void sift_down(int *array, size_t top, size_t last, size_t size)
 		return;
 
 	indice_del_max = next;
-	if ((next + 1) < last && array[next + 1] > array[next])
+	if ((next + 1) <= last && array[next + 1] > array[next])
 		indice_del_max = next + 1;
 
 	if (array[top] < array[indice_del_max])
