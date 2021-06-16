@@ -13,24 +13,19 @@ void shell_sort(int *array, size_t size)
 {
 
 	int hold;
-	size_t k, i, j,  gap, l;
+	size_t i, j,  gap, l;
 
 	if (array == NULL || size <= 1)
 		return;
 
-	for (k = 1; k < size; k++)
+	for (gap = 0; gap < size;)
 	{
-		gap = new_gap(k);
-		if (gap > (size / 2))
-		{
-			k--;
-			break;
-		}
+		gap = (gap * 3) + 1;
 	}
 
-	while (k > 0)
+	while (gap > 1)
 	{
-		gap = new_gap(k);
+		gap = gap / 3;
 		for (l = 0; l < gap; l++)
 		{
 			for (i = gap + l; i < size; i += gap)
@@ -52,23 +47,9 @@ void shell_sort(int *array, size_t size)
 			}
 		}
 		print_array(array, size);
-		k--;
 	}
 }
 
-/**
- * new_gap - find the k gap for Knuth secuence
- * @k: index in knuth sequence.
- * Return: the gap.
- */
-size_t new_gap(size_t k)
-{
-	int gap;
-
-	gap = power(3, k) - 1;
-	gap /= 2;
-	return (gap);
-}
 
 /**
  * power - calculates the power for the number
