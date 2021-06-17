@@ -29,8 +29,8 @@ void counting_sort(int *array, size_t size)
 		index = array[i];
 		array_count[index] += 1;
 	}
-	for (i = 0; i <= max_number; i++)
-		array_count[i] += array_count[i - 1];
+	for (i = 0; i < max_number; i++)
+		array_count[i + 1] += array_count[i];
 
 	print_array(array_count, max_number + 1);
 
