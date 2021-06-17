@@ -11,6 +11,8 @@ void counting_sort(int *array, size_t size)
 	int i, index, idx_position, value, max_number = array[0];
 	int *array_count, *array_copy;
 
+	if (size < 2)
+		return;
 	for (i = 1; i < (int)size; i++)
 	{
 		if (array[i] > max_number)
@@ -44,5 +46,4 @@ void counting_sort(int *array, size_t size)
 		value = array_copy[i];
 		idx_position = --(array_count[value]);
 		array[idx_position] = value;
-	}
-}
+	}	}
