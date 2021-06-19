@@ -12,6 +12,9 @@ void merge_sort(int *array, size_t size)
 	size_t i, j, k = 0, half = size / 2;
 	int half_copy[500] = {0};
 
+	if (array == NULL || size < 2)
+		return;
+
 	/* call recursion */
 	if (half > 1)
 		merge_sort(array, half);
@@ -20,9 +23,8 @@ void merge_sort(int *array, size_t size)
 
 	/* copy left subarray */
 	for (i = 0; i < half; i++)
-	{
 		half_copy[i] = array[i];
-	}
+
 	/* print sub_arrays */
 	printf("Merging...\n[left]: ");
 	print_array(half_copy, half);
@@ -39,12 +41,10 @@ void merge_sort(int *array, size_t size)
 		else if (j >= size)
 			array[k++] = half_copy[i++];
 		else
-		{
 			if (half_copy[i] < array[j])
 				array[k++] = half_copy[i++];
 			else
 				array[k++] = array[j++];
-		}
 	}
 	/* print result */
 	printf("[Done]: ");
