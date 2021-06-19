@@ -52,7 +52,8 @@ void cocktail_sort_list(listint_t **list)
 				if (change_exists == 1)
 					break;
 				current = current->next;
-			}	}
+			}
+		}
 		while (current->next != NULL)
 			current = current->next;
 		while (current->prev != NULL)
@@ -69,4 +70,5 @@ void cocktail_sort_list(listint_t **list)
 		}
 		if (change_exists == 0)
 			break;
-	}	}
+	}
+}
