@@ -36,10 +36,13 @@ void cocktail_sort_list(listint_t **list)
 
 	if (list == NULL || *list == NULL)
 		return;
+
 	while (1)
 	{
 		current = *list;
 		change_exists = 0;
+
+		/* bubble sort to right */
 		while (current->next != NULL)
 		{
 			if (current->n > current->next->n)
@@ -48,26 +51,21 @@ void cocktail_sort_list(listint_t **list)
 				change_exists = 1;
 			}
 			else
-			{
-				if (change_exists == 1)
-					break;
 				current = current->next;
-			}
 		}
-		while (current->next != NULL)
-			current = current->next;
+
+		/* bubble sort to left */
 		while (current->prev != NULL)
 		{
 			if (current->n < current->prev->n)
-			{
+			{	/* mov the current to prev and then swap*/
 				current = current->prev;
 				swap_func(list, current);
-				change_exists = 2;
+				change_exists = 1;
 			}
-			else if (change_exists == 2)
-				break;
 			current = current->prev;
 		}
+		/* if the list is already ordered, exit of the infinity loop */
 		if (change_exists == 0)
 			break;
 	}
