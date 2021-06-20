@@ -1,9 +1,28 @@
 #include "sort.h"
 
 void array_swap(int *array, size_t first, size_t second);
+void _quick_sort_ho(int *array, size_t size, int *sub_array, size_t sub_size);
+
 
 /**
  * quick_sort_hoare - sorts an array of integers in ascending order using
+ * the Quick sort algorithm
+ * @array: Array of integers to be used.
+ * @size: Size of the array.
+ * Return: Nothing.
+ */
+void quick_sort_hoare(int *array, size_t size)
+{
+	if (array == NULL || size <= 1)
+	{
+		return;
+	}
+	/*quick_sort_recursive(array, 0, size - 1, size);*/
+	_quick_sort_ho(array, size, array, size);
+}
+
+/**
+ * _quick_sort_ho - sorts an array of integers in ascending order using
  * the Quick sort algorithm
  * @array: Array of integers to be used.
  * @size: Size of the array.
@@ -11,18 +30,17 @@ void array_swap(int *array, size_t first, size_t second);
  * @sub_size: index of the end the subarray
  * Return: Nothing.
  */
-void quick_sort_hoare(int *array, size_t size)
+void _quick_sort_ho(int *array, size_t size, int *sub_array, size_t sub_size)
 {
 	int pivot = sub_array[sub_size - 1];
 	size_t i = 0, j;
 
-	
 
 	while (sub_array[i] < pivot)
 	{
 		i++;
 		if (i == (sub_size - 1))
-			_quick_sort(array, size, sub_array, sub_size - 1);
+			_quick_sort_ho(array, size, sub_array, sub_size - 1);
 	}
 	j = i + 1;
 	while (j < sub_size)
@@ -49,9 +67,9 @@ void quick_sort_hoare(int *array, size_t size)
 		if (j == sub_size)
 		{
 			if (i > 1)
-				_quick_sort(array, size, sub_array, i);
+				_quick_sort_ho(array, size, sub_array, i);
 			if (i < sub_size - 2)
-				_quick_sort(array, size, sub_array + i + 1, sub_size - i - 1);
+				_quick_sort_ho(array, size, sub_array + i + 1, sub_size - i - 1);
 			break;
 		}
 	}
